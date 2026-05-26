@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import FeatureName from "./Dsidebar/featureName";
 
 const Dsidebar = () => {
   return (
@@ -23,69 +24,35 @@ const Dsidebar = () => {
         <div className="h-3 w-3 rounded-full bg-green-300"></div>
       </div>
       {/* feature1  */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
-          icon={faHome}
-          style={{ color: "white", height: "20px", width: "20px" }}
-        />
-        <h1 className="text-2xl text-gray-300 select-none">Deshboard</h1>
-      </div>
-      {/* f2  */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
-          icon={faFile}
-          style={{ color: "white", height: "20px", width: "20px" }}
-        />
-        <h1 className="text-2xl text-gray-300 select-none">Resume</h1>
-      </div>
-      {/* f3  */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
+      <>
+        <FeatureName icon={faHome} name="Deshboard" redirect="/deshboard" />
+        {/* f2  */}
+        <FeatureName icon={faFile} name="Resume" redirect="/resume" />
+        {/* f3  */}
+        <FeatureName
           icon={faCalendar}
-          style={{ color: "white", height: "20px", width: "20px" }}
+          name="Study Planner"
+          redirect="/planner"
         />
-        <h1 className="text-2xl text-gray-300 select-none">Study Planner</h1>
-      </div>
-      {/* f4 */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
+        {/* f4 */}
+        <FeatureName
           icon={faFileExport}
-          style={{ color: "white", height: "20px", width: "20px" }}
+          name="File Share"
+          redirect="/fileshare"
         />
-        <h1 className="text-2xl text-gray-300 select-none">File Share</h1>
-      </div>
-      {/* f5  */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
+        {/* f5  */}
+        <FeatureName
           icon={faBlackboard}
-          style={{ color: "white", height: "20px", width: "20px" }}
+          name="Whiteboard"
+          redirect="/whiteboard"
         />
-        <h1 className="text-2xl text-gray-300 select-none">Whiteboard</h1>
-      </div>
-      {/* f6  */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
-          icon={faList}
-          style={{ color: "white", height: "20px", width: "20px" }}
-        />
-        <h1 className="text-2xl text-gray-300 select-none">Playlist Store</h1>
-      </div>
-      {/* f7  */}
-      <div className=" flex items-center gap-4  p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
-          icon={faRobot}
-          style={{ color: "white", height: "20px", width: "20px" }}
-        />
-        <h1 className="text-2xl text-gray-300 select-none">AI Assistant</h1>
-      </div>
-      {/* f8  */}
-      <div className=" flex items-center gap-4 p-3 hover:bg-gray-600 rounded-2xl cursor-pointer">
-        <FontAwesomeIcon
-          icon={faGear}
-          style={{ color: "white", height: "20px", width: "20px" }}
-        />
-        <h1 className="text-2xl text-gray-300 select-none">Setting</h1>
-      </div>
+        {/* f6  */}
+        <FeatureName icon={faList} name="Playlist Store" redirect="/playlist" />
+        {/* f7  */}
+        <FeatureName icon={faRobot} name="AI Assistant" redirect="/AI" />
+        {/* f8  */}
+        <FeatureName icon={faGear} name="Setting" redirect="/setting" />
+      </>
 
       {/* pro planner */}
       <div className="flex flex-col gap-3 mt-9 items-center bg-[#0B1023] rounded-2xl p-3">
