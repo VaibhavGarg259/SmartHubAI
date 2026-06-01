@@ -7,6 +7,7 @@ import FileInfo from "./FileInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Areatext from "./Areatext";
+import axios from "axios";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -25,14 +26,47 @@ const Projects = () => {
     description: "",
   });
 
-  const Phandlechange = (e) => {
+  const Phandlechange = async (e) => {
     setProjectData({
       ...ProjectData,
       [e.target.name]: e.target.value,
     });
   };
+  // sendToBackend
+  const sendToBackend = async (resumeData) => {
+    // const resumeData = JSON.parse(localStorage.getItem("resumeData"));
 
-  const PhandleSubmit = (e) => {
+    const payload = {
+      fullName: resumeData.personal?.name,
+      title: resumeData.personal?.title,
+
+      skills: JSON.stringify(resumeData.skills),
+      experience: JSON.stringify(resumeData.experience),
+      education: JSON.stringify(resumeData.education),
+      projects: JSON.stringify(resumeData.projects),
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/resume/generate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const PhandleSubmit = async (e) => {
     e.preventDefault();
 
     const oldData = JSON.parse(localStorage.getItem("resumeData")) || {};
@@ -44,8 +78,27 @@ const Projects = () => {
 
     localStorage.setItem("resumeData", JSON.stringify(updatedData));
 
-    // navigate("/resume/projects");
+    // ✅ send to backend here
+    await sendToBackend(updatedData);
   };
+
+  // const PhandleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const oldData = JSON.parse(localStorage.getItem("resumeData")) || {};
+
+  //   const updatedData = {
+  //     ...oldData,
+  //     projects: ProjectData,
+  //   };
+
+  //   localStorage.setItem("resumeData", JSON.stringify(updatedData));
+
+  //   // navigate("/resume/projects");
+
+  //    // ✅ send to backend here
+  // await sendToBackend(updatedData);
+  // };
 
   const addExperience = () => {
     setProject([...project, Date.now()]);
@@ -212,6 +265,7 @@ const Projects = () => {
                       <button
                         type="submit"
                         className="text-xl w-full text-center p-2 rounded-xl from-[#6366f1] to-[#A855F7] bg-gradient-to-r cursor-pointer "
+                        // onClick={sendToBackend}
                       >
                         Submit
                       </button>

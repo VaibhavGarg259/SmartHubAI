@@ -4,7 +4,7 @@ import OpenAI from "openai";
 import Resume from "../models/resume.model.js";
 
 const openai = new OpenAI({
-  //   apiKey: process.env.OPENAI_API_KEY,
+  // apiKey: process.env.OPENAI_API_KEY,
   apiKey: "AIzaSyDz4HS8ZYaVW40U7w6kgXvkmunEzOGW4k8",
 });
 
