@@ -1,12 +1,18 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
-const Step = (props) => {
+const Step = () => {
+  const location = useLocation();
   return (
     <div className="flex">
       {/* step 1  */}
       <div className="flex flex-col  ">
         <div className="flex items-center">
-          <div className="text-center px-5 py-3 bg-gray-500 rounded-full ">
+          <div
+            className={`text-center px-5 py-3  rounded-full ${
+              location.pathname === "/resume" ? "bg-blue-500" : "bg-gray-500"
+            }`}
+          >
             1
           </div>
           <div className="h-0.5 w-20 bg-gray-600"></div>
@@ -16,7 +22,13 @@ const Step = (props) => {
       {/* step 2  */}
       <div className="flex flex-col  ">
         <div className="flex items-center">
-          <div className="text-center px-5 py-3 bg-gray-500 rounded-full ">
+          <div
+            className={`text-center px-5 py-3  rounded-full ${
+              location.pathname === "/resume/experience"
+                ? "bg-blue-500"
+                : "bg-gray-500"
+            }`}
+          >
             2
           </div>
           <div className="h-0.5 w-20 bg-gray-600"></div>
@@ -26,7 +38,13 @@ const Step = (props) => {
       {/* step 3  */}
       <div className="flex flex-col  ">
         <div className="flex items-center">
-          <div className="text-center px-5 py-3 bg-gray-500 rounded-full ">
+          <div
+            className={`text-center px-5 py-3  rounded-full ${
+              location.pathname === "/resume/education"
+                ? "bg-blue-500"
+                : "bg-gray-500"
+            }`}
+          >
             3
           </div>
           <div className="h-0.5 w-20 bg-gray-600"></div>
@@ -36,7 +54,13 @@ const Step = (props) => {
       {/* step 4  */}
       <div className="flex flex-col  ">
         <div className="flex items-center">
-          <div className="text-center px-5 py-3 bg-gray-500 rounded-full ">
+          <div
+            className={`text-center px-5 py-3  rounded-full ${
+              location.pathname === "/resume/skill"
+                ? "bg-blue-500"
+                : "bg-gray-500"
+            }`}
+          >
             4
           </div>
           <div className="h-0.5 w-20 bg-gray-600"></div>
@@ -46,7 +70,13 @@ const Step = (props) => {
       {/* step 5  */}
       <div className="flex flex-col  ">
         <div className="flex items-center">
-          <div className="text-center px-5 py-3 bg-gray-500 rounded-full ">
+          <div
+            className={`text-center px-5 py-3  rounded-full ${
+              location.pathname === "/resume/projects"
+                ? "bg-blue-500"
+                : "bg-gray-500"
+            }`}
+          >
             5
           </div>
           {/* <div className="h-0.5 w-20 bg-gray-600"></div> */}
